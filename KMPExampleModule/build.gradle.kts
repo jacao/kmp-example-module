@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
 }
 
 kotlin {
@@ -47,6 +48,14 @@ android {
     defaultConfig {
         minSdkVersion(16)
         targetSdkVersion(30)
+    }
+}
+
+multiplatformSwiftPackage {
+    packageName("KMPExampleModule")
+    swiftToolsVersion("5.4")
+    targetPlatforms {
+        iOS { v("13") }
     }
 }
 
