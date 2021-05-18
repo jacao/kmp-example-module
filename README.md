@@ -23,5 +23,5 @@ git push origin master --tags
 
 * https://johnoreilly.dev/posts/kotlinmultiplatform-swift-package/
 * https://github.com/ge-org/multiplatform-swiftpackage
-* https://johnoreilly.dev/posts/kotlinmultiplatform-swift-package/
+* https://levelup.gitconnected.com/integrate-kotlin-multiplatform-mobile-to-existing-android-and-ios-apps-93876060bff5
 
