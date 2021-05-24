@@ -13,7 +13,7 @@
 .externalNativeBuild
 .cxx
 local.properties
-KMPExampleModule/build
-KMPExampleModule/swiftpackage
-!KMPExampleModule/swiftpackage/README.md
-!KMPExampleModule/swiftpackage/.git
+*/build
+*/swiftpackage
+!*/swiftpackage/README.md
+!*/swiftpackage/.git
