@@ -1,7 +1,7 @@
 workflows:
     gradle-build:
-    name: Gradle
-    instance_type: mac_mini
-    max_build_duration: 360
-    scripts:
+      name: Gradle
+      instance_type: mac_mini
+      max_build_duration: 360
+      scripts:
         - ./gradlew createSwiftPackage
