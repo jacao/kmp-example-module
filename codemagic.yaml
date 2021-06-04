@@ -4,3 +4,5 @@ workflows:
       instance_type: mac_mini
       scripts:
         - ./gradlew createSwiftPackage
+      artifacts:
+        - KMPExampleModule/swiftpackage/*.zip
