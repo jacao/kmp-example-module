@@ -6,10 +6,10 @@ plugins {
     id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
     id("kotlin-android-extensions")
     jacoco
+    id("kmp.scripts")
 }
-
-version = "0.0.1"
 group = "com.example.kmpexamplemodule"
+version = "1.0.0"
 
 jacoco {
     toolVersion = "0.8.6"
