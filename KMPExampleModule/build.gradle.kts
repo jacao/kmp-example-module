@@ -5,7 +5,13 @@ plugins {
     id("com.android.library")
     id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
     id("kotlin-android-extensions")
+    jacoco
 }
+
+jacoco {
+    toolVersion = "0.8.5"
+}
+
 kotlin {
     android {
         publishLibraryVariants("release")
@@ -64,6 +70,7 @@ multiplatformSwiftPackage {
         iOS { v("13") }
     }
 }
+
 val packForXcode by tasks.creating(Sync::class) {
     val mode = System.getenv("CONFIGURATION") ?: "DEBUG"
     val framework = kotlin.targets.getByName<KotlinNativeTarget>("ios").binaries.getFramework(mode)
@@ -76,3 +83,47 @@ val packForXcode by tasks.creating(Sync::class) {
 }
 
 tasks.getByName("build").dependsOn(packForXcode)
+
+val jacocoTestReport by tasks.creating(JacocoReport::class.java) {
+    dependsOn("test")
+    reports {
+        xml.isEnabled = true
+        csv.isEnabled = true
+        html.isEnabled = true
+        File("${buildDir}/jacocoHtml")
+    }
+    classDirectories.setFrom(fileTree("${project.buildDir}/tmp/kotlin-classes/debug"))
+    sourceDirectories.setFrom(files(project.projectDir))
+    executionData.setFrom(
+        fileTree(project.projectDir) {
+            setIncludes(setOf("build/jacoco/*.exec"))
+        }
+    )
+}
+
+val jacocoTestCoverageVerification by tasks.creating(JacocoCoverageVerification::class.java) {
+    dependsOn(jacocoTestReport)
+    violationRules {
+        rule {
+            limit {
+                minimum = "0.95".toBigDecimal()
+            }
+        }
+    }
+    classDirectories.setFrom(fileTree("${project.buildDir}/tmp/kotlin-classes/debug"))
+    sourceDirectories.setFrom(files(project.projectDir))
+    executionData.setFrom(
+        fileTree(project.projectDir) {
+            setIncludes(setOf("build/jacoco/*.exec"))
+        }
+    )
+}
+
+val testCoverage by tasks.registering {
+    group = "verification"
+    description = "Runs the unit tests with coverage."
+
+    dependsOn("test", jacocoTestReport, jacocoTestCoverageVerification)
+    tasks["jacocoTestReport"].mustRunAfter("test")
+    tasks["jacocoTestCoverageVerification"].mustRunAfter("jacocoTestReport")
+}
