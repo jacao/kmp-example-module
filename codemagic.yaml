@@ -16,6 +16,6 @@ workflows:
           script: |
             sudo pip3 install awscli --upgrade
             ls
-            aws s3 sync . s3://unidays-app-dependencies/ios --exclude '*' --include '[!/]*.zip' --exclude '*/*'
+            aws s3 sync ./KMPExampleModule/swiftpackage/ s3://unidays-app-dependencies/ios/KMPExampleModule --exclude '*' --include '*.zip' --exclude '*/*'
       artifacts:
         - KMPExampleModule/swiftpackage/*.zip
