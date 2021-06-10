@@ -12,5 +12,10 @@ workflows:
           script: aws s3api list-objects --bucket unidays-app-dependencies
         - name: Create swift package
           script: ./gradlew createSwiftPackage
+        - name: Upload binary to s3
+          script: |
+            sudo pip3 install awscli --upgrade
+            ls
+            aws s3 sync . s3://unidays-app-dependencies/ios --exclude '*' --include '[!/]*.zip' --exclude '*/*'
       artifacts:
         - KMPExampleModule/swiftpackage/*.zip
