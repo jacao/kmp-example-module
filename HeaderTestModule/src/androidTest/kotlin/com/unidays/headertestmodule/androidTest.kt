@@ -1,15 +1,12 @@
 package com.unidays.headertestmodule
 
-import org.junit.Assert.assertTrue
+import com.unidays.headertestmodule.HeaderBuilder.Companion.TEST_HEADER_ID
 import org.junit.Test
+import kotlin.test.assertEquals
 
 class AndroidGreetingTest {
-
     @Test
     fun testExample() {
-        kotlin.test.assertTrue(
-            HeaderBuilder().getHeader().contains("Header String"),
-            "Header string"
-        )
+        assertEquals(HeaderBuilder().getHeader(TEST_HEADER_ID), HeaderBuilder.TEST_HEADER)
     }
 }

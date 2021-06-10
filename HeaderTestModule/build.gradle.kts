@@ -8,6 +8,9 @@ plugins {
     jacoco
 }
 
+version = "0.0.1"
+group = "com.unidays.headertestmodule"
+
 jacoco {
     toolVersion = "0.8.5"
 }
