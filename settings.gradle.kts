@@ -1,3 +1,3 @@
-rootProject.name = "KMP Example Module"
+rootProject.name = "kmp-example-module"
 include(":KMPExampleModule")
 include(":HeaderTestModule")
