@@ -8,8 +8,8 @@ workflows:
           AWS_REGION: eu-west-1
           AWS_SECRET_ACCESS_KEY: Encrypted(Z0FBQUFBQmd3T29MSWpJeHFvMXkwYlRncnYyM25rMkU0UWRDZTJkN3F4czcwSG9EbEN5VlVTaVFxTVU2ZGgxUjQzSTdzN1lOb3dkelNEQjFkSjg4OTROS3k0blA1akV5a0tKWjdPOS01TDRuVTI3NGoyOHF3Qkh5a2NYeGE5VU9OelN1NnZXT0Y0MEQ=)
       scripts:
-        - name: list bucket contents
-          script: aws s3api list-objects --bucket unidays-app-dependencies
+        - name: Run unit tests
+          script: ./gradlew KMPExampleModule:check
         - name: Create swift package
           script: ./gradlew createSwiftPackage
         - name: Upload binary to s3
