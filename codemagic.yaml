@@ -1,0 +1,21 @@
+workflows:
+    gradle-build:
+      name: Gradle
+      instance_type: mac_mini
+      environment:
+        vars:
+          AWS_ACCESS_KEY_ID: Encrypted(Z0FBQUFBQmd3T25adXpUNjFEdTB4cUlsdFJPLVFPZU5VQXVLZHprS01HYlZCcy1ONS0wSUNOLVVkSnR1TXY2T29ub0JKbldyN0o3VU03bFhIbWkxbU1fSU0yc0hVeG5QNGhFbUx0ZnVsUDhadWUtcEFRejFtdGM9)
+          AWS_REGION: eu-west-1
+          AWS_SECRET_ACCESS_KEY: Encrypted(Z0FBQUFBQmd3T29MSWpJeHFvMXkwYlRncnYyM25rMkU0UWRDZTJkN3F4czcwSG9EbEN5VlVTaVFxTVU2ZGgxUjQzSTdzN1lOb3dkelNEQjFkSjg4OTROS3k0blA1akV5a0tKWjdPOS01TDRuVTI3NGoyOHF3Qkh5a2NYeGE5VU9OelN1NnZXT0Y0MEQ=)
+      scripts:
+        - name: Run unit tests
+          script: ./gradlew KMPExampleModule:check
+        - name: Create swift package
+          script: ./gradlew createSwiftPackage
+        - name: Upload binary to s3
+          script: |
+            sudo pip3 install awscli --upgrade
+            ls
+            aws s3 sync ./KMPExampleModule/swiftpackage/ s3://unidays-app-dependencies/ios/KMPExampleModule --exclude '*' --include '*.zip' --exclude '*/*'
+      artifacts:
+        - KMPExampleModule/swiftpackage/*.zip
