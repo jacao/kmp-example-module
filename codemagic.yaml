@@ -19,3 +19,9 @@ workflows:
             aws s3 sync ./KMPExampleModule/swiftpackage/ s3://unidays-app-dependencies/ios/KMPExampleModule --exclude '*' --include '*.zip' --exclude '*/*'
       artifacts:
         - KMPExampleModule/swiftpackage/*.zip
+    test-pull-request:
+      name: Test Pull Request
+      instance_type: mac_mini
+      scripts:
+        - name: Run unit tests
+          script: ./gradlew KMPExampleModule:check
