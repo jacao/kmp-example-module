@@ -30,6 +30,11 @@ workflows:
             include: true
             source: true
       scripts:
+        - name: Check java version
+          script: javac -version
+        - name: Check java version two
+          script: java --version
         - name: Run unit tests
           script: ./gradlew build KMPExampleModule:testCoverage
           test_report: KMPExampleModule/build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml
+
