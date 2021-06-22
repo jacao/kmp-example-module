@@ -4,7 +4,7 @@ val jacocoTestReport by tasks.creating(JacocoReport::class.java) {
         xml.isEnabled = true
         csv.isEnabled = true
         html.isEnabled = true
-        File("${buildDir}/jacocoHtml")
+        html.outputLocation.set(layout.buildDirectory.dir("jacocoHtml"))
     }
     classDirectories.setFrom(fileTree("${project.buildDir}/tmp/kotlin-classes/debug"))
     sourceDirectories.setFrom(files(project.projectDir))

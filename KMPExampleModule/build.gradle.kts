@@ -12,7 +12,7 @@ version = "0.0.1"
 group = "com.example.kmpexamplemodule"
 
 jacoco {
-    toolVersion = "0.8.5"
+    toolVersion = "0.8.6"
 }
 
 apply {
