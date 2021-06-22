@@ -32,4 +32,4 @@ workflows:
       scripts:
         - name: Run unit tests
           script: ./gradlew build KMPExampleModule:testCoverage
-      test_report: KMPExampleModule/build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml
+          test_report: KMPExampleModule/build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml
