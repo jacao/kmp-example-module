@@ -11,7 +11,7 @@ workflows:
         - name: Run unit tests
           script: ./gradlew KMPExampleModule:check
         - name: Create swift package
-          script: ./gradlew createSwiftPackage
+          script: ./gradlew KMPExampleModule:createSwiftPackage
         - name: Upload binary to s3
           script: |
             sudo pip3 install awscli --upgrade
@@ -31,4 +31,5 @@ workflows:
             source: true
       scripts:
         - name: Run unit tests
-          script: ./gradlew KMPExampleModule:check
+          script: ./gradlew build KMPExampleModule:testCoverage
+      test_report: KMPExampleModule/build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml
