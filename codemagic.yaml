@@ -3,6 +3,7 @@ workflows:
       name: Gradle
       instance_type: mac_mini
       environment:
+        java: 11
         vars:
           AWS_ACCESS_KEY_ID: Encrypted(Z0FBQUFBQmd3T25adXpUNjFEdTB4cUlsdFJPLVFPZU5VQXVLZHprS01HYlZCcy1ONS0wSUNOLVVkSnR1TXY2T29ub0JKbldyN0o3VU03bFhIbWkxbU1fSU0yc0hVeG5QNGhFbUx0ZnVsUDhadWUtcEFRejFtdGM9)
           AWS_REGION: eu-west-1
