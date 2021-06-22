@@ -24,7 +24,7 @@ workflows:
       name: Test Pull Request
       instance_type: mac_mini
       environment:
-        java: 11
+        java: 15
       triggering:
         events:
           - pull_request
