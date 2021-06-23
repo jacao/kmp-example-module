@@ -25,6 +25,8 @@ workflows:
       instance_type: mac_mini
       environment:
         java: 15
+        vars:
+          JAVA_HOME: /Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home
       triggering:
         events:
           - pull_request
