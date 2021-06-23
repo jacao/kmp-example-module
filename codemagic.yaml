@@ -51,6 +51,7 @@ workflows:
           script: java -version
         - name: Run unit tests
           script: |
+            cat ~/.bash_profile
             #echo $JAVA_HOME
             #export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home
             echo $JAVA_HOME
