@@ -53,8 +53,8 @@ workflows:
         - name: Run unit tests
           script: |
             cat ~/.bash_profile
-            #echo $JAVA_HOME
-            #export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home
+            echo $JAVA_HOME
+            export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home
             echo $JAVA_HOME
             ./gradlew -Dorg.gradle.java.home=/Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home build KMPExampleModule:testCoverage
         - name: LS Test Reports
