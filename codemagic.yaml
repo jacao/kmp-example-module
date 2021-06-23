@@ -51,6 +51,8 @@ workflows:
         - name: Check java version two
           script: java --version
         - name: Run unit tests
-          script: ./gradlew build KMPExampleModule:testCoverage
+          script: |
+            echo $JAVA_HOME
+            ./gradlew build KMPExampleModule:testCoverage
           test_report: KMPExampleModule/build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml
 
