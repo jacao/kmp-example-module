@@ -50,5 +50,5 @@ workflows:
             echo $JAVA_HOME
             ./gradlew -Dorg.gradle.java.home=/Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home build KMPExampleModule:testCoverage
       artifacts:
-        - KMPExampleModule/build/reports/jacoco/jacocoTestReport/html/index.html
+        - KMPExampleModule/build/jacocoHtml/com.example.kmpexamplemodule/index.html
 
