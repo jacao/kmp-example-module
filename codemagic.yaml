@@ -44,6 +44,7 @@ workflows:
             sudo tar -xzf openjdk-15.0.2_osx-x64_bin.tar.gz
             sudo rm openjdk-15.0.2_osx-x64_bin.tar.gz
             /usr/libexec/java_home -v15
+            sed -i.old -E '/JAVA_HOME=*/d' ~/.bash_profile
             export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home
             echo "JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home" >> ~/.bash_profile
             source ~/.bash_profile
