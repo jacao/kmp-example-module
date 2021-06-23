@@ -23,10 +23,6 @@ workflows:
     test-pull-request:
       name: Test Pull Request
       instance_type: mac_mini
-      environment:
-        java: 15
-        vars:
-          JAVA_HOME: /Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home
       triggering:
         events:
           - pull_request
@@ -48,16 +44,10 @@ workflows:
             export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home
             echo "JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home" >> ~/.bash_profile
             source ~/.bash_profile
-        - name: Check java version
-          script: java -version
-        - name: Run unit tests
+        - name: Run Unit Tests and Coverage
           script: |
-            cat ~/.bash_profile
-            echo $JAVA_HOME
             export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home
             echo $JAVA_HOME
             ./gradlew -Dorg.gradle.java.home=/Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home build KMPExampleModule:testCoverage
-        - name: LS Test Reports
-          script: ls KMPExampleModule/build/reports/jacoco/jacocoTestReport/
-          #test_report: KMPExampleModule/build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml
+          test_report: KMPExampleModule/build/reports/jacoco/jacocoTestReport/*.xml
 
