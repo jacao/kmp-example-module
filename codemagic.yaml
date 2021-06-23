@@ -2,6 +2,9 @@ workflows:
     gradle-build:
       name: Gradle
       instance_type: mac_mini
+      cache:
+        cache_paths:
+          - ~/.gradle/caches
       environment:
         java: 11
         vars:
@@ -23,6 +26,9 @@ workflows:
     test-pull-request:
       name: Test Pull Request
       instance_type: mac_mini
+      cache:
+        cache_paths:
+          - ~/.gradle/caches
       triggering:
         events:
           - pull_request
