@@ -46,6 +46,10 @@ workflows:
             include: true
             source: true
       scripts:
+        - name: Check env variables
+          script: |
+            set -ex
+            printenv
         - *install_java_15
         - *run_unit_tests
       artifacts:
