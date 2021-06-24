@@ -22,7 +22,10 @@ workflows:
             export JAVA_HOME=$JAVA_LOCATION
             ./gradlew -Dorg.gradle.java.home=$JAVA_LOCATION build KMPExampleModule:testCoverage
         - name: Create Swift Package
-          script: ./gradlew -Dorg.gradle.java.home=$JAVA_LOCATION KMPExampleModule:createSwiftPackage
+          script: |
+            source ~/.bash_profile
+            export JAVA_HOME=$JAVA_LOCATION
+            ./gradlew -Dorg.gradle.java.home=$JAVA_LOCATION KMPExampleModule:createSwiftPackage
         - name: Upload Binary to S3
           script: |
             sudo pip3 install awscli --upgrade
