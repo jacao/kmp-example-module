@@ -21,7 +21,7 @@ workflows:
             source ~/.bash_profile
             echo $JAVA_LOCATION
             export JAVA_HOME=$JAVA_LOCATION
-            ./gradlew -D$JAVA_LOCATION build KMPExampleModule:testCoverage
+            ./gradlew -Dorg.gradle.java.home=$JAVA_LOCATION build KMPExampleModule:testCoverage
         - name: Create Swift Package
           script: ./gradlew KMPExampleModule:createSwiftPackage
         - name: Upload Binary to S3
