@@ -57,3 +57,11 @@ val testCoverage by tasks.registering {
     tasks["jacocoTestReport"].mustRunAfter("test")
     tasks["jacocoTestCoverageVerification"].mustRunAfter("jacocoTestReport")
 }
+
+val verifyCoverage by tasks.registering {
+    group = "verification"
+    description = "Generates coverage report after tests have been ran."
+
+    dependsOn(jacocoTestReport, jacocoTestCoverageVerification)
+    tasks["jacocoTestCoverageVerification"].mustRunAfter("jacocoTestReport")
+}

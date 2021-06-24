@@ -16,11 +16,17 @@ workflows:
           name: Install Java 15.0.2
           script: ./codeMagicScripts/installJava15.sh
         - &run_unit_tests
-          name: Run Unit Tests and Coverage
+          name: Run Unit Tests
           script: |
             source ~/.bash_profile
             export JAVA_HOME=$JAVA_LOCATION
-            ./gradlew -Dorg.gradle.java.home=$JAVA_LOCATION build KMPExampleModule:testCoverage
+            ./gradlew -Dorg.gradle.java.home=$JAVA_LOCATION build KMPExampleModule:test
+        - &verify_tests_coverage
+          name: Verify Tests Coverage
+          script: |
+            source ~/.bash_profile
+            export JAVA_HOME=$JAVA_LOCATION
+            ./gradlew -Dorg.gradle.java.home=$JAVA_LOCATION build KMPExampleModule:verifyCoverage
         - name: Create Swift Package
           script: |
             source ~/.bash_profile
@@ -52,6 +58,7 @@ workflows:
       scripts:
         - *install_java_15
         - *run_unit_tests
+        - *verify_tests_coverage
       artifacts:
         - KMPExampleModule/build/jacocoHtml/
 
