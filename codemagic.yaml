@@ -19,7 +19,6 @@ workflows:
           name: Run Unit Tests and Coverage
           script: |
             source ~/.bash_profile
-            echo $JAVA_LOCATION
             export JAVA_HOME=$JAVA_LOCATION
             ./gradlew -Dorg.gradle.java.home=$JAVA_LOCATION build KMPExampleModule:testCoverage
         - name: Create Swift Package
@@ -48,12 +47,8 @@ workflows:
             include: true
             source: true
       scripts:
-        - name: Check env variables
-          script: |
-            set -ex
-            printenv
         - *install_java_15
         - *run_unit_tests
       artifacts:
-        - KMPExampleModule/build/jacocoHtml/com.example.kmpexamplemodule/index.html
+        - KMPExampleModule/build/jacocoHtml/
 
