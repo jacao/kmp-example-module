@@ -36,7 +36,7 @@ workflows:
       instance_type: mac_mini
       environment:
         vars:
-          JAVA_15_LOCATION: /Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home
+          JAVA_LOCATION: /Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home
       cache:
         cache_paths:
           - ~/.gradle/caches
