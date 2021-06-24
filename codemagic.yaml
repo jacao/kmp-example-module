@@ -38,18 +38,7 @@ workflows:
             source: true
       scripts:
         - name: Install Java 15.0.2
-          script: |
-            curl -O https://download.java.net/java/GA/jdk15.0.2/0d1cfde4252546c6931946de8db48ee2/7/GPL/openjdk-15.0.2_osx-x64_bin.tar.gz
-            sudo rm -R /Library/Java/JavaVirtualMachines/*
-            sudo mv openjdk-15.0.2_osx-x64_bin.tar.gz /Library/Java/JavaVirtualMachines/
-            cd /Library/Java/JavaVirtualMachines
-            sudo tar -xzf openjdk-15.0.2_osx-x64_bin.tar.gz
-            sudo rm openjdk-15.0.2_osx-x64_bin.tar.gz
-            /usr/libexec/java_home -v15
-            sed -i.old -E '/JAVA_HOME=*/d' ~/.bash_profile
-            export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home
-            echo "JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home" >> ~/.bash_profile
-            source ~/.bash_profile
+          script: ./codeMagicScripts/installJava15.sh
         - name: Run Unit Tests and Coverage
           script: |
             export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home
