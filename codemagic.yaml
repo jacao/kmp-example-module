@@ -10,7 +10,7 @@ workflows:
           AWS_ACCESS_KEY_ID: Encrypted(Z0FBQUFBQmd3T25adXpUNjFEdTB4cUlsdFJPLVFPZU5VQXVLZHprS01HYlZCcy1ONS0wSUNOLVVkSnR1TXY2T29ub0JKbldyN0o3VU03bFhIbWkxbU1fSU0yc0hVeG5QNGhFbUx0ZnVsUDhadWUtcEFRejFtdGM9)
           AWS_REGION: eu-west-1
           AWS_SECRET_ACCESS_KEY: Encrypted(Z0FBQUFBQmd3T29MSWpJeHFvMXkwYlRncnYyM25rMkU0UWRDZTJkN3F4czcwSG9EbEN5VlVTaVFxTVU2ZGgxUjQzSTdzN1lOb3dkelNEQjFkSjg4OTROS3k0blA1akV5a0tKWjdPOS01TDRuVTI3NGoyOHF3Qkh5a2NYeGE5VU9OelN1NnZXT0Y0MEQ=)
-          JAVA_15_LOCATION: /Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home
+          JAVA_LOCATION: /Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home
       scripts:
         - &install_java_15
           name: Install Java 15.0.2
@@ -18,8 +18,10 @@ workflows:
         - &run_unit_tests
           name: Run Unit Tests and Coverage
           script: |
-            export JAVA_HOME=$JAVA_15_LOCATION
-            ./gradlew -D$JAVA_15_LOCATION build KMPExampleModule:testCoverage
+            source ~/.bash_profile
+            echo $JAVA_LOCATION
+            export JAVA_HOME=$JAVA_LOCATION
+            ./gradlew -D$JAVA_LOCATION build KMPExampleModule:testCoverage
         - name: Create Swift Package
           script: ./gradlew KMPExampleModule:createSwiftPackage
         - name: Upload Binary to S3
