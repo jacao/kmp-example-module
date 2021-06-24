@@ -5,6 +5,18 @@ plugins {
     id("com.android.library")
     id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
     id("kotlin-android-extensions")
+    jacoco
+}
+
+version = "0.0.1"
+group = "com.unidays.headertestmodule"
+
+jacoco {
+    toolVersion = "0.8.6"
+}
+
+apply {
+    from("../jacoco.gradle.kts")
 }
 
 kotlin {
