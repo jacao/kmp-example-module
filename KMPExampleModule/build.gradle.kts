@@ -9,7 +9,7 @@ plugins {
     id("kmp.scripts")
 }
 group = "com.example.kmpexamplemodule"
-version = "1.0.0"
+version = "1.0.3"
 
 jacoco {
     toolVersion = "0.8.6"
@@ -20,8 +20,10 @@ apply {
 }
 
 kotlin {
+
     android {
-        publishLibraryVariants("release")
+        publishAllLibraryVariants()
+        publishLibraryVariantsGroupedByFlavor = true
     }
     val iosTarget: (String, KotlinNativeTarget.() -> Unit) -> KotlinNativeTarget =
         if (System.getenv("SDK_NAME")?.startsWith("iphoneos") == true)
