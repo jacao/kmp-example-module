@@ -16,6 +16,7 @@ detekt {
     buildUponDefaultConfig = true // preconfigure defaults
     allRules = false // activate all available (even unstable) rules.
     input = files("src/commonMain/kotlin")
+    autoCorrect = false
 
     reports {
         html.enabled = true
