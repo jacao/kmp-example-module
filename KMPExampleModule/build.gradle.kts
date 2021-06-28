@@ -5,31 +5,31 @@ plugins {
     id("com.android.library")
     id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
     id("kotlin-android-extensions")
-    id("io.gitlab.arturbosch.detekt") version "1.17.1"
+//    id("io.gitlab.arturbosch.detekt") version "1.17.1"
     jacoco
 }
 
 version = "0.0.1"
 group = "com.example.kmpexamplemodule"
 
-detekt {
-    buildUponDefaultConfig = true // preconfigure defaults
-    allRules = false // activate all available (even unstable) rules.
-    input = files("src/commonMain/kotlin")
-    autoCorrect = false
-
-    reports {
-        html.enabled = true
-        xml.enabled = true
-        txt.enabled = true
-        sarif.enabled = true
-    }
-}
-
-tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
-    // Target version of the generated JVM bytecode. It is used for type resolution.
-    jvmTarget = "1.8"
-}
+//detekt {
+//    buildUponDefaultConfig = true // preconfigure defaults
+//    allRules = false // activate all available (even unstable) rules.
+//    input = files("src/commonMain/kotlin")
+//    autoCorrect = false
+//
+//    reports {
+//        html.enabled = true
+//        xml.enabled = true
+//        txt.enabled = true
+//        sarif.enabled = true
+//    }
+//}
+//
+//tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+//    // Target version of the generated JVM bytecode. It is used for type resolution.
+//    jvmTarget = "1.8"
+//}
 
 jacoco {
     toolVersion = "0.8.6"
